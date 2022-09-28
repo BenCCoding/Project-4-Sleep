@@ -53,9 +53,9 @@ export default function Feed(){
               numPhotosCol={1}
               isProfile={false}
               loading={loading}
-              addLike={addLike}
-              removeLike={removeLike}
-              loggedUser={loggedUser}
+            //   addLike={addLike}
+            //   removeLike={removeLike}
+            //   loggedUser={loggedUser}
             />
           </Grid.Column>
         </Grid.Row>

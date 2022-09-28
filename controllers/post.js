@@ -15,7 +15,7 @@ module.exports = {
 
 function create(req, res) {
   console.log(req.body, req.file, req.user); // < req.user comes the config/auth middleware that is mounted before our controllers in the server.js
-  const key = `pupstagram/posts/${uuidv4()}-${req.file.originalname}`;
+  const key = `pupstagram/posts/${uuidv4()}-${req.file.originalname}`; //Change pupstagram to sleeptracker
   const params = { Bucket: BUCKET_NAME, Key: key, Body: req.file.buffer };
 
   s3.upload(params, async function (err, data) {

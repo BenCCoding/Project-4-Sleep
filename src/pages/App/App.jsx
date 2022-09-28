@@ -4,6 +4,7 @@ import "./App.css";
 
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import Feed from "../Feed/Feed";
 
 import userService from "../../utils/userService";
 
@@ -24,7 +25,7 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<h1>This is Home Page!</h1>} />
+        <Route path="/" element={<Feed loggedUser={user}/>} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}

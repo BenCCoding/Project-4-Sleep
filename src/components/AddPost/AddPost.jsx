@@ -36,7 +36,7 @@ export default function AddPostForm(props) {
           className="form-control"
           name="caption"
           value={state.caption}
-          placeholder="What's on your pups mind?"
+          placeholder="How long did you sleep?"
           onChange={handleChange}
           required
         />
@@ -49,7 +49,7 @@ export default function AddPostForm(props) {
           />
         </Form.Field>
         <Button type="submit" className="btn">
-          ADD PUPPY
+          ADD SLEEP NOTE
         </Button>
       </Form>
     </Segment>
