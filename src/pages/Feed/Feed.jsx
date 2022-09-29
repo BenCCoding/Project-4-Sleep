@@ -3,12 +3,15 @@ import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/Header/Header";
 import AddPost from "../../components/AddPost/AddPost";
 import PostGallery from "../../components/PostGallery/PostGallery";
+import Loading from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import { Grid } from "semantic-ui-react";
 
 import * as postsAPI from "../../utils/postApi";
 
 export default function Feed(){
+    
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -32,7 +35,34 @@ export default function Feed(){
     }
   }
 
+  async function getPosts() {
+    try {
+      const response = await postsAPI.getAll();
+      console.log(response, " data");
+      setPosts([...response.data]);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.message, " this is the error");
+      setLoading(false);
+    }
+  }
 
+  useEffect(() => {
+    //Getting posts, C(R)UD
+    
+
+    getPosts();
+  }, []); // This is useEffect runs once when the Feed component
+  // loads
+
+  if (error) {
+    return (
+      <>
+        <PageHeader />
+        <ErrorMessage error={error} />;
+      </>
+    );
+  }
 
     return (
     <Grid centered>
@@ -53,9 +83,7 @@ export default function Feed(){
               numPhotosCol={1}
               isProfile={false}
               loading={loading}
-            //   addLike={addLike}
-            //   removeLike={removeLike}
-            //   loggedUser={loggedUser}
+              // loggedUser={loggedUser}
             />
           </Grid.Column>
         </Grid.Row>

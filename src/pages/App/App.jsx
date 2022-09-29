@@ -4,6 +4,7 @@ import "./App.css";
 
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import ProfilePage from '../Profile/Profile';
 import Feed from "../Feed/Feed";
 
 import userService from "../../utils/userService";
@@ -21,11 +22,15 @@ function App() {
     userService.logout();
     setUser(null);
   }
-
+  console.log(user,  'this is user')
   if (user) {
+   
     return (
       <Routes>
-        <Route path="/" element={<Feed loggedUser={user}/>} />
+        <Route
+          path="/"
+          element={<Feed loggedUser={user} handleLogout={handleLogout} />}
+        />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -33,6 +38,10 @@ function App() {
         <Route
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
+        />
+        <Route
+          path="/:username"
+          element={<ProfilePage loggedUser={user} handleLogout={handleLogout} />}
         />
       </Routes>
     );

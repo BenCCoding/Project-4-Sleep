@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 
-const likesSchema = mongoose.Schema({
-  username: String,
-  userId: { type: mongoose.Schema.Types.ObjectId }
-})
-
 // A post has many likes, a like belongs to a POST
+// Change the photo URL into more text, get rid of like
 const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
     photoUrl: String,
     caption: String,
-    likes: [likesSchema] // embedded schema// One Post has many Likes!
+    //likes: [likesSchema] // embedded schema// One Post has many Likes!
   })
  
 
