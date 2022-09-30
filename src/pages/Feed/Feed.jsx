@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/Header/Header";
 import AddPost from "../../components/AddPost/AddPost";
 import PostGallery from "../../components/PostGallery/PostGallery";
-import Loading from "../../components/Loader/Loader";
+// import Loading from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import { Grid } from "semantic-ui-react";
@@ -47,6 +47,16 @@ export default function Feed(){
     }
   }
 
+  async function handleDelete(id) {
+    try {
+      await postsAPI.deletePost(id);
+      getPosts();
+    } catch (err) {
+      console.log(err.message, " this is the error");
+      // setLoading(false);
+    }
+  }
+
   useEffect(() => {
     //Getting posts, C(R)UD
     
@@ -83,6 +93,7 @@ export default function Feed(){
               numPhotosCol={1}
               isProfile={false}
               loading={loading}
+              deletePost={handleDelete}
               // loggedUser={loggedUser}
             />
           </Grid.Column>

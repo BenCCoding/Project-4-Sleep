@@ -2,8 +2,14 @@ import React from 'react';
 import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react'
 import PostCard from '../PostCard/PostCard';
 import Loader from '../Loader/Loader';
+// import { deletePost } from "../../utils/postApi";
 
-export default function PostGallery({posts, numPhotosCol, isProfile, loading, removeLike, addLike, loggedUser}){
+export default function PostGallery({posts, numPhotosCol, isProfile, deletePost, loading, loggedUser}){
+
+  // const deletePost = () => {
+  //   deletePost(post._id);
+
+  // };
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
@@ -22,6 +28,7 @@ export default function PostGallery({posts, numPhotosCol, isProfile, loading, re
               key={post._id}
               isProfile={isProfile}
               loggedUser={loggedUser}
+              deletePost={deletePost}
             />
           );
         })}

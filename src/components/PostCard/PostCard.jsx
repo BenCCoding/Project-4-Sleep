@@ -1,9 +1,10 @@
 import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
+import * as postsAPI from "../../utils/postApi.js"
 
-function PostCard({ post, isProfile, loggedUser }) {
-
+function PostCard({ post, isProfile, deletePost, loggedUser }) {
+console.log(post._id);
   // if the logged in user is in the post.likes array (they have liked the post)
   // then our onClick should be removeLike
   // the color of the heart should be red
@@ -20,7 +21,9 @@ function PostCard({ post, isProfile, loggedUser }) {
 
   // if likedIndex is -1 the color should be 'grey' (the user wasn't in the post.likes array)
   // likedIndex is greater then -1 (the user is in the post.likes array) the color should be red
- 
+  async function deleteData(id) {
+    deletePost(id)
+  }
 
   return (
     <Card>
@@ -44,6 +47,7 @@ function PostCard({ post, isProfile, loggedUser }) {
       <Image src={`${post?.photoUrl}`} wrapped ui={false} />
       <Card.Content>
         <Card.Description>{post.caption}</Card.Description>
+        <button onClick={()=>deleteData(post._id)}>Delete</button>
       </Card.Content>
       {/* <Card.Content extra textAlign={"right"}>
         <Icon name={"heart"} size="large" color={likeColor} onClick={clickHandler} />
