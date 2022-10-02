@@ -6,6 +6,9 @@ const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
     photoUrl: String,
     caption: String,
+    date: String,
+    sleepTime: String,
+    sleepLength: String,
     //likes: [likesSchema] // embedded schema// One Post has many Likes!
   })
  

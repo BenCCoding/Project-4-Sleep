@@ -3,18 +3,18 @@ import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/Header/Header";
 import AddPost from "../../components/AddPost/AddPost";
 import PostGallery from "../../components/PostGallery/PostGallery";
-// import Loading from "../../components/Loader/Loader";
+import Loading from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import { Grid } from "semantic-ui-react";
 
 import * as postsAPI from "../../utils/postApi";
 
-export default function Feed(){
+export default function Feed({loggedUser, handleLogout}){
     
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const [error] = useState("");
 
   // Why?
   // Creating a POST (C)RUD
@@ -27,7 +27,7 @@ export default function Feed(){
 
       // data is the response from the api, the result of the .then if(res.ok) return res.json() in the create postAPI utils function
       console.log(response);
-      setPosts([response.data, ...posts]); /// ...posts would keep all the posts in the previous states array
+      getPosts(); /// ...posts would keep all the posts in the previous states array
       setLoading(false);
     } catch (err) {
       // this is the error from the throw block, in the postsAPI.create function
@@ -59,35 +59,46 @@ export default function Feed(){
 
   useEffect(() => {
     //Getting posts, C(R)UD
-    
 
     getPosts();
   }, []); // This is useEffect runs once when the Feed component
   // loads
 
   if (error) {
-    return (
-      <>
-        <PageHeader />
-        <ErrorMessage error={error} />;
-      </>
-    );
-  }
+      return (
+        <>
+          <PageHeader handleLogout={handleLogout} loggedUser={loggedUser} />
+          <ErrorMessage error={error} />;
+         
+        </>
+      );
+    }
+    if (loading){
+      return(
+          <>
+              <PageHeader handleLogout={handleLogout} loggedUser={loggedUser} />
+              <Loading />
+          </>
+      )
+    }
 
     return (
-    <Grid centered>
+    <Grid 
+    centered
+    style={{minHeight: "102vh", minWidth: "100vh", "background-image": "linear-gradient(to bottom, #010329, #000a38, #000f47, #001055, #0c1064)"}}
+    >
         <Grid.Row>
           <Grid.Column>
-            <PageHeader />
+            <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 450}}>
             <AddPost handleAddPost={handleAddPost} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 450}}>
             <PostGallery
               posts={posts}
               numPhotosCol={1}

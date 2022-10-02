@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
@@ -97,13 +97,14 @@ export default function SignUpPage(props) {
 
   return (
     <Grid
-      textAlign="center"
-      style={{ height: "100vh", width: "100vw" }}
-      verticalAlign="middle"
+    textAlign="center"
+    style={{ minHeight: "102vh", minWidth: "100vh", 
+    "background-image": "linear-gradient(to bottom, #010329, #000a38, #000f47, #001055, #0c1064)" }}
+    verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up
+        Sign Up
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
@@ -140,13 +141,13 @@ export default function SignUpPage(props) {
               onChange={handleChange}
               required
             />
-            <Form.TextArea
+            {/* <Form.TextArea
               label="bio"
               name="bio"
               placeholder="Tell us more about your dogs..."
               value={state.bio}
               onChange={handleChange}
-            />
+            /> */}
             <Form.Field>
               <Form.Input
                 type="file"

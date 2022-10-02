@@ -8,7 +8,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
 } from "semantic-ui-react";
@@ -47,12 +46,13 @@ export default function LoginPage(props) {
   return (
       <Grid
         textAlign="center"
-        style={{ height: "100vh", width: "100vw" }}
+        style={{ minHeight: "102vh", minWidth: "100vh", 
+        "background-image": "linear-gradient(to bottom, #010329, #000a38, #000f47, #001055, #0c1064)" }}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="teal" textAlign="center">
-            <Image src="https://i.imgur.com/s4LrnlU.png" /> Log-in to your
+          <Header as="h2" color='teal' textAlign="center">
+            Log-in to your
             account
           </Header>
           <Form onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ export default function LoginPage(props) {
                 required
               />
               <Button
-                color="teal"
+                color="yellow"
                 fluid
                 size="large"
                 type="submit"

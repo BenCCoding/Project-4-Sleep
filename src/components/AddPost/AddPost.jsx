@@ -5,6 +5,9 @@ export default function AddPostForm(props) {
   // create the state, pay attention to how the inputs are setup!
   const [state, setState] = useState({
     caption: "",
+    date: "",
+    sleepTime: "",
+    sleepLength: "",
   });
   // The function that handles the changes on the input, Look at the inputs for the name of it
   const [selectedFile, setSelectedFile] = useState("");
@@ -16,8 +19,9 @@ export default function AddPostForm(props) {
 
   function handleChange(e) {
     setState({
-      caption: e.target.value,
-    });
+        ...state,
+        [e.target.name]: e.target.value
+    })
   }
 
   function handleSubmit(e) {
@@ -26,21 +30,48 @@ export default function AddPostForm(props) {
     const formData = new FormData();
     formData.append("photo", selectedFile);
     formData.append("caption", state.caption);
+    formData.append("date", state.date);
+    formData.append("sleepTime", state.sleepTime);
+    formData.append("sleepLength", state.sleepLength);
     props.handleAddPost(formData); // formData is the data we want to send to the server!
   }
 
   return (
-    <Segment>
+    <Segment style={{"background-color":"cornsilk"}}>
       <Form onSubmit={handleSubmit}>
         <Form.Input
           className="form-control"
-          name="caption"
-          value={state.caption}
+          name="date"
+          value={state.date}
+          placeholder="What was the Date?"
+          onChange={handleChange}
+          required
+        />
+        <Form.Input
+          className="form-control"
+          name="sleepTime"
+          value={state.sleepTime}
+          placeholder="When did you sleep?"
+          onChange={handleChange}
+          required
+        />
+        <Form.Input
+          className="form-control"
+          name="sleepLength"
+          value={state.sleepLength}
           placeholder="How long did you sleep?"
           onChange={handleChange}
           required
         />
-        <Form.Field>
+        <Form.Input
+          className="form-control"
+          name="caption"
+          value={state.caption}
+          placeholder="How did you feel when you woke up?"
+          onChange={handleChange}
+        />
+        <Form.Field style={{'text-align':'center'}}>
+          <p>Upload Where You Slept</p>
           <Form.Input
             type="file"
             name="photo"
@@ -48,9 +79,11 @@ export default function AddPostForm(props) {
             onChange={handleFileInput}
           />
         </Form.Field>
+        <Form.Field style={{'text-align':'center'}}>
         <Button type="submit" className="btn">
-          ADD SLEEP NOTE
+          ADD SLEEPING NOTE
         </Button>
+        </Form.Field>
       </Form>
     </Segment>
   );

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <style>
+            .purple {background-color: purple;}
+            .blue {background-color: blue;}
+            .divWidth {width: 60%; margin: auto;}
+            .yellow {color:yellow;}
+            .hidden {display:none;}
+        </style>
+        <script>
+            function switchColor(id){
+                let div = document.getElementById(id);
+                div.style.backgroundColor = div.style.backgroundColor == "purple" ? "blue" : "purple";
+            }
+            function hide(id){
+                let div = document.getElementById(id);
+                div.style.display = div.style.display == "block" ? "none" : "block";
+            }
+        </script>
+    </head>
+     <body>
+        <button onclick="switchColor('example')">Click Me</button>
+        <button onclick="hide('example')">Hide div1</button>
+        <button onclick="hide('loggedIn')">Hide div2</button>
+        <div id="example" class="blue divWidth">
+            <p>Type In Name:
+            <input type="text" value="" class="yellow">Test Paragraph</input>
+            </p>
+        </div>
+        <div id="loggedIn" class="blue divWidth none">
+            <p>Joe Logged In</p>
+        </div>
+    </body>
+
+</html>
