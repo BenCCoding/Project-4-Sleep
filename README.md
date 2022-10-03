@@ -1,39 +1,42 @@
-## Setup 
+# The Sleep Tracker App:
+* This app is a collection of sleep. The intention for the app is made with the reminder throughout my course that everyone hasn't slept peacefully while worrying what could go wrong the next day. The app is just a way to try and keep a track of your days, like when working so hard that Monday becomes Friday within a day and you can't recall what you did for the week.
+* Essentially, The Sleep Tracker a list of posts made by people who want to share how they slept. 
+* The User can sign up for the sleep tracker and will be greeted with the 5 required field to make your account. The Username, email, password, confirmation and your profile picture you can post if you want.
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+* When logged in you will be greeted with the 5 requirements to post your own sleeping note while also being able to see any other posts made by everone else that is on the app.
 
+* **Add Post Information**, The 4 input fields can be filled out however you want since the App
+is built off of what you put into the website with your account. They can be summed up to the date you posted, when you went to bed, how long did you sleep for, and you can add what you felt like this morning.
+* **Photo**, Now you could post where you slept whether it could be outside or you could post something else to give your post some flair.
+* **Profile Account**, On the top left is your profile picture that can be clicked to view your own posts instead of having to scroll through the main feed if you want to remember what was your post. You can then press the house picture on the top right to return to the main posting page.
 
-#### Setup your git repo
+[Deployed link](https://sleeptracker8.herokuapp.com/)
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+# What it looks like
 
-it should look like this
+### Website Main Page
+![image of drinks](https://imgur.com/EOsLKoI)
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
+### Profile Page
+![image of reviews](https://imgur.com/EOsLKoI)
 
-#### Setup the App
+# Technology
+* React, JS, Django, Git Hub, CSS, HTML, Amazon Web Servies, S3 Buckets. 
+* Heroku
 
-```npm install```
+# Future improvements
+* React has been a difficult partner to work nicely with, so some functions couldn't be made or they did not work because react rejected the given information.
+* An edit function for posts that you can access incase you mistyped
+* Having the edit and delete function work within your profile screen.
+* Fixing the little bugs and oversights that may arise when you use the App on your pc.
 
-*DOTENV*
+# Original Planning
+* [Trello](https://trello.com/b/dmSZowyO/project-4)
 
-`touch .env`
+[Deployed link](https://sleeptracker8.herokuapp.com/)
 
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+# Credits:
+* Our Instructors.
+* Classmates that were willing help throughout the process.
+* TA hours.
+* General Assembly.

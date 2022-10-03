@@ -37,8 +37,9 @@ export default function AddPostForm(props) {
   }
 
   return (
-    <Segment style={{"background-color":"cornsilk"}}>
+    <Segment style={{"background-color":"cornsilk", 'text-align':'center'}}>
       <Form onSubmit={handleSubmit}>
+      <h2>Post How You Slept Here!</h2>
         <Form.Input
           className="form-control"
           name="date"
@@ -71,7 +72,7 @@ export default function AddPostForm(props) {
           onChange={handleChange}
         />
         <Form.Field style={{'text-align':'center'}}>
-          <p>Upload Where You Slept</p>
+          <h3>Upload Where You Slept.</h3>
           <Form.Input
             type="file"
             name="photo"
