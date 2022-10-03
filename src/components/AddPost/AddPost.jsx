@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
 
 export default function AddPostForm(props) {
-  // create the state, pay attention to how the inputs are setup!
+
   const [state, setState] = useState({
     caption: "",
     date: "",
     sleepTime: "",
     sleepLength: "",
   });
-  // The function that handles the changes on the input, Look at the inputs for the name of it
   const [selectedFile, setSelectedFile] = useState("");
 
   function handleFileInput(e) {
@@ -33,7 +32,7 @@ export default function AddPostForm(props) {
     formData.append("date", state.date);
     formData.append("sleepTime", state.sleepTime);
     formData.append("sleepLength", state.sleepLength);
-    props.handleAddPost(formData); // formData is the data we want to send to the server!
+    props.handleAddPost(formData); 
   }
 
   return (

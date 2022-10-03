@@ -16,21 +16,15 @@ export default function Feed({loggedUser, handleLogout}){
     const [loading, setLoading] = useState(true);
     const [error] = useState("");
 
-  // Why?
-  // Creating a POST (C)RUD
-  // cuz we want to update state whenever we change a POST CRUD operations*
   async function handleAddPost(post) {
-    // post, is coming from the addPostForm component, when we call this function onSubmit props.handleAddPost(formData)
     try {
       setLoading(true);
-      const response = await postsAPI.create(post); // waiting for the json to be return from the server and parsed by us!
+      const response = await postsAPI.create(post);
 
-      // data is the response from the api, the result of the .then if(res.ok) return res.json() in the create postAPI utils function
       console.log(response);
-      getPosts(); /// ...posts would keep all the posts in the previous states array
+      getPosts(); 
       setLoading(false);
     } catch (err) {
-      // this is the error from the throw block, in the postsAPI.create function
       console.log(err.message);
     }
   }
@@ -53,16 +47,13 @@ export default function Feed({loggedUser, handleLogout}){
       getPosts();
     } catch (err) {
       console.log(err.message, " this is the error");
-      // setLoading(false);
     }
   }
 
   useEffect(() => {
-    //Getting posts, C(R)UD
 
     getPosts();
-  }, []); // This is useEffect runs once when the Feed component
-  // loads
+  }, []); 
 
   if (error) {
       return (
@@ -105,7 +96,6 @@ export default function Feed({loggedUser, handleLogout}){
               isProfile={false}
               loading={loading}
               deletePost={handleDelete}
-              // loggedUser={loggedUser}
             />
           </Grid.Column>
         </Grid.Row>

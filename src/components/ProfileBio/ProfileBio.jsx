@@ -20,9 +20,6 @@ function ProfileBio({ user }) {
           >
             <h1>{user.username}</h1>
           </Segment>
-          {/* <Segment>
-            <span> Bio: {user.bio}</span>
-          </Segment> */}
         </Grid.Column>
       </Grid.Row>
     </Grid>

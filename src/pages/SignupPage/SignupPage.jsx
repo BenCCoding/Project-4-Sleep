@@ -4,8 +4,6 @@ import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
-// Utility functions that don't pertain to the component can 
-// be defined outside it
 
 function isPasswordMatch(passwordOne, passwordConf) {
   return passwordOne === passwordConf;
@@ -27,8 +25,6 @@ export default function SignUpPage(props) {
 
   const [selectedFile, setSelectedFile] = useState("");
 
-  // initialized the react router hook, which allows you to programatically
-  // change routes, aka after our signup call in the handleSubmit
   const navigate = useNavigate();
 
   function handleChange(e) {
@@ -39,23 +35,14 @@ export default function SignUpPage(props) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault(); // this stop the browser from submitting the form!
+    e.preventDefault(); 
 
     if (!isPasswordMatch(state.password, state.passwordConf)) return setError({message: 'Passwords Must Match!', passwordError: true});
     setError({message: '', passwordError: false})
-    // Create formData, so we can send over our file, using multipart/formdata header
-    // which sends over the basic inputs, and then the file
 
-    const formData = new FormData(); //< - this constructor from the browser allows us to create data
-    // now we can set key value pairs on the formData
+    const formData = new FormData(); 
     formData.append("photo", selectedFile);
-    // Line by line tactic
-    // formData.append('username', state.username);
-    // formData.append('email', state.email);
-    // and so on for the rest or our state
 
-    // A more robust way to generate the rest of the formData is using a loop!
-    // loop over our state object using a for ... in loop
     for (let key in state) {
       formData.append(key, state[key]);
     }
@@ -71,18 +58,11 @@ export default function SignUpPage(props) {
     );
 
     try {
-      await userService.signup(formData); // THIS IS WHERE WE ARE MAKING A REQUEST TO THE SERVER, the response is handled inside function .thens, go at the look at the function
-      // After the line above,
-      // the new token is in localstorage,
-      // so now we can update state
-      props.handleSignUpOrLogin(); // <- call the function from the app component
-      // that gets the token from localstorage, and sets in our App's state
+      await userService.signup(formData); 
+      props.handleSignUpOrLogin(); 
  
-      // navigate whereever after the user has logged in
-      navigate("/"); // this accepts a route you defined in your App.js
+      navigate("/"); 
     } catch (err) {
-      // the error comes from the throw statement in the signup functions
-      // .then
       console.log(err);
       setError({message: err.message, passwordError: false});
     }
@@ -141,13 +121,6 @@ export default function SignUpPage(props) {
               onChange={handleChange}
               required
             />
-            {/* <Form.TextArea
-              label="bio"
-              name="bio"
-              placeholder="Tell us more about your dogs..."
-              value={state.bio}
-              onChange={handleChange}
-            /> */}
             <Form.Field>
               <Form.Input
                 type="file"

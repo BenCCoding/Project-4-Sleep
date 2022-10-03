@@ -2,10 +2,7 @@ import tokenService from "./tokenService";
 
 const BASE_URL = "/api/posts/";
 
-// This is where we create any of the fetch calls the communicate with the routes
-// in /api/routes (Routes folder => posts
-
-export function create(post) {// DONT STRINGIFY, THIS IS A PHOTO POST! (formdata)
+export function create(post) {
     return fetch(BASE_URL, {
       method: "POST",
       body: post,
@@ -25,8 +22,7 @@ export function create(post) {// DONT STRINGIFY, THIS IS A PHOTO POST! (formdata
 export function getAll() {
     return fetch(BASE_URL, {
       headers: {
-        'Authorization': 'Bearer ' + tokenService.getToken() // This grabs thee JWT token out
-        // local storage and send its in the header to the server
+        'Authorization': 'Bearer ' + tokenService.getToken() 
       }
     })
     .then((res) => {
