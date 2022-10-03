@@ -10,8 +10,6 @@ is built off of what you put into the website with your account. They can be sum
 * **Photo**, Now you could post where you slept whether it could be outside or you could post something else to give your post some flair.
 * **Profile Account**, On the top left is your profile picture that can be clicked to view your own posts instead of having to scroll through the main feed if you want to remember what was your post. You can then press the house picture on the top right to return to the main posting page.
 
-[Deployed link](https://sleeptracker8.herokuapp.com/)
-
 # What it looks like
 
 ### Website Main Page
@@ -33,7 +31,7 @@ is built off of what you put into the website with your account. They can be sum
 # Original Planning
 * [Trello](https://trello.com/b/dmSZowyO/project-4)
 
-[Deployed link](https://sleeptracker8.herokuapp.com/)
+* Website: [Deployment link](https://sleeptracker8.herokuapp.com/)
 
 # Credits:
 * Our Instructors.
