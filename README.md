@@ -15,10 +15,10 @@ is built off of what you put into the website with your account. They can be sum
 # What it looks like
 
 ### Website Main Page
-![image of drinks](https://imgur.com/EOsLKoI)
+![image of drinks](https://imgur.com/EOsLKoI.png)
 
 ### Profile Page
-![image of reviews](https://imgur.com/EOsLKoI)
+![image of reviews](https://imgur.com/EOsLKoI.png)
 
 # Technology
 * React, JS, Django, Git Hub, CSS, HTML, Amazon Web Servies, S3 Buckets. 
